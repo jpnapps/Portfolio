@@ -7,4 +7,53 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+
+    <color name="light_border_color_1">#70BD70</color>
+    <color name="light_border_color_2">#13BD13</color>
+
+    <color name="dark_border_color_1">#EC95CC</color>
+    <color name="dark_border_color_2">#BC0CC3</color>
+
+    <color name="sys_border_color_1">#AEC3FB</color>
+    <color name="sys_border_color_2">#51BDF6</color>
+
+    <color name="light_view_color_1">#EFE1CE</color>
+    <color name="sys_view_color_1">#D6EAEC</color>
+    <color name="dark_view_color_1">#40085E</color>
+
+
+    <color name="primaryText">#000000</color>
+    <color name="icon">#5d1049</color>
+    <color name="buttonNormal">#e30425</color>
+    <color name="buttonHighlight">#ff554f</color>
+    <color name="buttonText">#FFFFFF</color>
+
+    <!-- Mint Theme Colors -->
+    <color name="mintColorPrimary">#aade2f</color>
+    <color name="mintColorPrimaryDark">#cc9b23</color>
+    <color name="mintColorAccent">#f9a825</color>
+    <color name="mintPrimaryText">#424242</color>
+    <color name="mintIcon">#ff554f</color>
+    <color name="mintButtonNormal">#76be2f</color>
+    <color name="mintButtonHighlight">#81c784</color>
+    <color name="mintButtonText">#FFFFFF</color>
+
+
+    <color name="black_0">#000000</color>
+    <color name="black_1">#121212</color>
+    <!--    <color name="black_1">#212122</color>-->
+    <color name="black_2">#110216</color>
+    <color name="black_3">#090432</color>
+    <color name="black_4">#2E2424</color>
+    <color name="black_5">#1B0101</color>
+
+    <color name="b_hint_1">#A59C9C</color>
+    <color name="b_hint_2">#EFE2E2</color>
+    <color name="w_hint_1">#8A958A</color>
+    <color name="w_hint_2">#B8C6B8</color>
+    <color name="s_hint_1">#D5D3D3</color>
+    <color name="s_hint_2">#C2C3C6</color>
+
 </resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="primaryTextColor" format="reference"/>
+    <attr name="buttonNormalColor" format="reference"/>
+    <attr name="buttonHighlightColor" format="reference" />
+    <attr name="buttonTextColor" format="reference" />
+    <attr name="iconColor" format="reference" />
+
+    <attr name="textViewStyle" format="reference" />
+    <attr name="primaryButtonTheme" format="reference" />
+
+    <attr name="bg_1" format="reference" />
+
+    <attr name="bg_2" format="reference" />
+
+    <attr name="bg_list_1" format="reference" />
+
+    <attr name="bg_list_2" format="reference" />
+
+    <attr name="bg_home_1" format="reference" />
+
+    <attr name="bg_home_2" format="reference" />
+
+    <attr name="bg_detail_1" format="reference" />
+
+    <attr name="bg_detail_2" format="reference" />
+
+    <attr name="bg_rcv_item_1" format="reference" />
+    <attr name="bg_rcv_item_2" format="reference" />
+
+
+    <attr name="bg_card_1" format="reference" />
+    <attr name="bg_card_2" format="reference" />
+
+    <attr name="bg_view_1" format="reference" />
+    <attr name="bg_view_2" format="reference" />
+
+
+    <attr name="bg_border_1" format="reference" />
+    <attr name="bg_border_2" format="reference" />
+
+
+    <attr name="text_color_1" format="reference"/>
+    <attr name="text_color_2" format="reference"/>
+    <attr name="text_color_3" format="reference"/>
+    <attr name="text_color_4" format="reference"/>
+    <attr name="text_color_5" format="reference"/>
+
+    <attr name="btn_text_color_1" format="reference"/>
+    <attr name="btn_text_color_2" format="reference"/>
+
+
+    <attr name="tint_1" format="reference" />
+    <attr name="tint_2" format="reference" />
+
+    <attr name="gradient_1" format="reference" />
+    <attr name="gradient_2" format="reference" />
+    <attr name="gradient_3" format="reference" />
+    <attr name="gradient_4" format="reference" />
+
+
+
+</resources>

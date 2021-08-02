@@ -1,2 +1,3 @@
-rootProject.name = "Android Module"
+rootProject.name = "JPN app"
 include ':app'
+include ':utillibrary'
