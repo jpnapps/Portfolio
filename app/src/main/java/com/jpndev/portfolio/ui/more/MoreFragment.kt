@@ -1,5 +1,6 @@
 package com.jpndev.portfolio.ui.more
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.jpndev.portfolio.R
 import com.jpndev.portfolio.databinding.FragmentHomeBinding
 import com.jpndev.portfolio.databinding.FragmentMoreBinding
 import com.jpndev.portfolio.ui.home.HomeViewModel
+import com.jpndev.portfolio.ui.pmanage.PManageActivity
 
 class MoreFragment  : Fragment() {
 
@@ -40,6 +42,17 @@ class MoreFragment  : Fragment() {
             textView.text = it
         })*/
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.pwdManagerCard.setOnClickListener {
+            val intent = Intent(activity, PManageActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            activity?.startActivity(intent)
+
+        }
+
     }
 
     override fun onDestroyView() {

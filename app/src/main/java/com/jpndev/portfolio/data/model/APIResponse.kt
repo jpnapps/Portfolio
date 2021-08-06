@@ -11,3 +11,12 @@ data class APIResponse(
     @SerializedName("totalResults")
     val totalResults: Int*/
 )
+
+data class PListResponse(
+    @SerializedName("pitem")
+    val pitem_list: List<PItem>,
+/*    @SerializedName("status")
+    val status: String,
+    @SerializedName("totalResults")
+    val totalResults: Int*/
+)

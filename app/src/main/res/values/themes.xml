@@ -122,6 +122,8 @@
 
         <item name="bg_card_1">@color/app_white_bg</item>
         <item name="bg_card_2">@color/app_white_bg</item>
+        <item name="bg_fab_1">@color/light_border_color_1</item>
+
         <item name="bg_rcv_item_1">@color/app_white_bg</item>
         <item name="bg_rcv_item_2">@color/app_white_bg</item>
 
@@ -171,9 +173,10 @@
         <item name="bg_list_2">@color/black_1</item>
 
 
-        <item name="bg_card_1">@color/black_2</item>
+        <item name="bg_card_1">@color/black_0</item>
         <item name="bg_card_2">@color/black_3</item>
 
+        <item name="bg_fab_1">@color/Color_DarkGoldenrod</item>
 
         <item name="bg_rcv_item_1">@color/app_black_bg_3</item>
         <item name="bg_rcv_item_2">@color/app_black_bg_4</item>
@@ -229,6 +232,8 @@
         <item name="bg_card_1">@color/app_white_bg</item>
         <item name="bg_card_2">@color/app_white_bg</item>
 
+
+        <item name="bg_fab_1">@color/light_border_color_1</item>
 
         <item name="bg_rcv_item_1">@color/app_white_bg</item>
         <item name="bg_rcv_item_2">@color/app_white_bg</item>

@@ -1,6 +1,7 @@
 package com.jpndev.portfolio.data.repository.dataSource
 
 import com.jpndev.portfolio.data.model.Article
+import com.jpndev.portfolio.data.model.PItem
 import kotlinx.coroutines.flow.Flow
 
 interface LocalDataSource {
@@ -8,4 +9,9 @@ interface LocalDataSource {
      fun getArticlesFromDB(): Flow<List<Article>>
      suspend fun deleteArticle(item : Article)
      suspend fun clearAll()
+
+     suspend fun savePItemtoDb(item : PItem)
+     fun getPItemsFromDB(): Flow<List<PItem>>
+     suspend fun deletePItem(item : PItem)
+     suspend fun clearAllPItems()
 }

@@ -220,14 +220,23 @@
     </style>
 
 
+    <style name="BASE_FAB_1" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@android:drawable/ic_input_add</item>
+        <item name="rippleColor">?attr/bg_fab_1</item>
+        <item name="backgroundTint">?attr/bg_fab_1</item>
+        <item name="iconTint">?attr/tint_1</item>
+    </style>
+
     <!--        <item name="cardBackgroundColor">?attr/bg_card_1</item>-->
     <style name="BASE_CARD_1" >
 
 
         <item name="cardBackgroundColor">?attr/bg_card_1</item>
         <item name="cardCornerRadius">@dimen/_10sdp</item>
-        <item name="cardElevation">@dimen/_3sdp</item>
-        <item name="cardMaxElevation">@dimen/_3sdp</item>
+        <item name="cardElevation">@dimen/_6sdp</item>
+        <item name="cardMaxElevation">@dimen/_6sdp</item>
         <item name="contentPadding">@dimen/_1sdp</item>
     </style>
 

@@ -32,6 +32,8 @@
     <attr name="bg_card_1" format="reference" />
     <attr name="bg_card_2" format="reference" />
 
+    <attr name="bg_fab_1" format="reference" />
+
     <attr name="bg_view_1" format="reference" />
     <attr name="bg_view_2" format="reference" />
 
@@ -58,6 +60,21 @@
     <attr name="gradient_3" format="reference" />
     <attr name="gradient_4" format="reference" />
 
-
+    <declare-styleable name="DeviceFitImageView">
+        <attr name="width_percentage" format="integer"/>
+        <attr name="tolerance_width" format="integer"/>
+        <attr name="height_percentage" format="integer"/>
+        <attr name="tolerance_height" format="integer"/>
+        <attr name="blur_radius" format="integer"/>
+        <attr name="aspect_ratio" format="float" />
+        <attr name="parameter">
+            <enum name="aspect_width" value="0"/>
+            <enum name="aspect_height" value="1"/>
+            <enum name="fixed_ratio" value="2"/>
+            <enum name="measure_width" value="3"/>
+            <enum name="measure_height" value="4"/>
+            <enum name="square" value="5"/>
+        </attr>
+    </declare-styleable>
 
 </resources>

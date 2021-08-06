@@ -3,7 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_more">...</string>
+    <string name="title_more">More</string>
 
     <string name="pwd_manager">Password Manager</string>
     <string name="security">Security</string>
@@ -124,4 +124,6 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="hint_user_name">Username</string>
+    <string name="hint_pwd">Password</string>
 </resources>

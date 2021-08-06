@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.jpndev.portfolio.databinding.ActivityMainBinding
 import com.jpndev.portfolio.presentation.ui.topqa.QAAdapter
 import com.jpndev.portfolio.presentation.ui.topqa.QAViewModelFactory
@@ -34,17 +36,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel= ViewModelProvider(this,factory).get(TopQAViewModel::class.java)
-        val navHostFragment=supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+    /*    val navHostFragment=supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController= navHostFragment.navController
      //   val navController = findNavController(R.id.fragmentContainerView)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications,R.id.navigation_more
             )
         )
-       // setupActionBarWithNavController(navController, appBarConfiguration)
-       // binding.navView.setupWithNavController(navController)
+    // setupActionBarWithNavController(navController, appBarConfiguration)
+       binding.navView.setupWithNavController(navController)*/
+
+
+        val navHostFragment=supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController= navHostFragment.navController
+        binding.navView.setupWithNavController(
+            navController
+        )
     }
 }

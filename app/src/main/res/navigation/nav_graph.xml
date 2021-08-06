@@ -27,7 +27,7 @@
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
-        android:id="@+id/moreFragment"
+        android:id="@+id/navigation_more"
         android:name="com.jpndev.portfolio.ui.more.MoreFragment"
         tools:layout="@layout/fragment_more"
         android:label="@string/title_more" />
