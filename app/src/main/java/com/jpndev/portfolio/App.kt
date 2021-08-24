@@ -1,8 +1,38 @@
 package com.jpndev.portfolio
 
 import android.app.Application
+import com.jpndev.portfolio.data.repository.dataSourceImpl.LogSourceImpl
 import dagger.hilt.android.HiltAndroidApp
+import kotlinx.coroutines.coroutineScope
+import java.lang.Exception
+import javax.inject.Inject
 
 
 @HiltAndroidApp
-class App : Application()
+class App : Application(){
+    @Inject
+    lateinit var   logSource: LogSourceImpl
+
+    suspend open fun addLog(obj: Any?) {
+
+   /*     coroutineScope {*/
+
+            try {
+
+
+                if (obj is String) {
+
+                    logSource.addLog("\n Text  = " +obj)
+
+
+                }
+
+
+
+            } catch (e: Exception) {
+                // activity.hideProgress()
+            }
+
+
+        }
+}

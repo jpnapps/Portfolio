@@ -1,6 +1,8 @@
-package com.beeone.techbank.sign.kyc.sumsub
+package com.jpndev.portfolio.ui.pmanage
+import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -11,6 +13,7 @@ import com.google.gson.JsonObject
 import com.jpndev.portfolio.data.model.PItem
 import com.jpndev.portfolio.data.util.Resource
 import com.jpndev.portfolio.domain.usecase.UseCase
+import com.jpndev.portfolio.utils.LogUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -27,8 +30,20 @@ class PManageViewModel (
         lateinit var user: User
 */
 
+        public fun getUseCase() =usecase
+
+        var text = MutableLiveData<String>()
+
+
+        init {
+            LogUtils.LOGD("pref_lc","\n PManageViewModel = "+ usecase.prefUtils.getString("lifecycle","Nothing found"))
+            text.value =   usecase.prefUtils.getString("lifecycle","Nothing found")
+        }
+
+
         fun deletePItem(article: PItem) =viewModelScope.launch {
             usecase.executeDeletePItrm(article)
+
         }
 
 
@@ -46,6 +61,14 @@ class PManageViewModel (
 
 
         }
+
+
+        fun showAddPItemActivity(activity: Activity) =viewModelScope.launch {
+            val intent = Intent(activity, AddPItemActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            activity?.startActivity(intent)
+        }
+
 
 
         val mld_Progress: MutableLiveData<Resource<PItem>> = MutableLiveData()

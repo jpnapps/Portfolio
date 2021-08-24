@@ -11,7 +11,8 @@ interface AppRepository {
     suspend fun getTopQA( page : Int): Resource<APIResponse>
     //suspend fun getPList( page : Int): PListResponse
 
-    suspend fun savePItem(article: PItem)
+    suspend fun savePItem(article: PItem): Long
+    suspend fun updatePItem(article: PItem): Int
     suspend fun deletePItem(article: PItem)
     fun getPItems(): Flow<List<PItem>>
 

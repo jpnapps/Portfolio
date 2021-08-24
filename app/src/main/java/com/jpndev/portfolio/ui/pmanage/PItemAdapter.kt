@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide
 
 import com.jpndev.portfolio.data.model.PItem
 import com.jpndev.portfolio.databinding.RcvItemPitemBinding
+import com.jpndev.portfolio.ui.pmanage.PManageViewModel
+import com.jpndev.portfolio.utils.AESUtils
 
 
 class PItemAdapter():RecyclerView.Adapter<PItemAdapter.MyViewHolder>() {
@@ -54,6 +56,15 @@ class PItemAdapter():RecyclerView.Adapter<PItemAdapter.MyViewHolder>() {
        holder.bind(item)
     }
 
+      var viewModel: PManageViewModel? = null
+
+
+    fun setViewModels( temp: PManageViewModel) {
+
+
+         viewModel=temp
+    }
+
 
 
 
@@ -61,8 +72,20 @@ inner class MyViewHolder(val binding: RcvItemPitemBinding):
 RecyclerView.ViewHolder(binding.root){
 
    fun bind(item: PItem){
-        binding.text1Ctxv.text = item.key1
-        binding.text2Ctxv.text = item.value1
+        binding.key1Txv.text = item.key1
+        binding.value1Ctxv.text = item.value1
+       binding.key2Ctxv.text = item.key2
+
+       viewModel?.getUseCase()?.logsource?.addLog("List before ="+ item.value2)
+       try {
+           item.value2 = AESUtils.decrypt(item.value2) ?: "Data formatted"
+       }catch(e:Exception) {
+          // item.value2 =
+       }
+       viewModel?.getUseCase()?.logsource?.addLog("List  after= "+ item.value2)
+
+
+       binding.value2Ctxv.text = item.value2
         //val posterURL = "https://image.tmdb.org/t/p/w500"+tvShow.posterPath
       /*  Glide.with(binding.imgDimv.context)
             .load(item.urlToImage)

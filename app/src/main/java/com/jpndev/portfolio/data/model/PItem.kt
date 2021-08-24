@@ -12,26 +12,31 @@ import java.io.Serializable
 data class PItem   (
     @PrimaryKey(autoGenerate = true)
     val id:Int?=null,
+
     @SerializedName("key1")
-    val key1: String?,
+    var key1: String="Username",
+
     @SerializedName("value1")
-    val value1: String?,
+    var value1: String="",
     @SerializedName("key2")
-    val key2: String?,
+
+    var key2: String="password",
     @SerializedName("value2")
-    val value2: String?,
+    var value2:  String="",
 
     @SerializedName("key3")
-    val key3: String?,
+    var key3:  String="",
     @SerializedName("value3")
-    val value3: String?,
+    var value3: String="",
+/*
 
     @SerializedName("text1_color")
-    val text1_color: String?,
+    var text1_color: String?,
     @SerializedName("text2_color")
-    val answer1_color: String?,
+    var answer1_color: String?,
     @SerializedName("web_url")
-    val web_url: String?,
+    var web_url: String?,
     @SerializedName("icon")
-    val icon: String?
+    var icon: String?
+*/
 ):Serializable

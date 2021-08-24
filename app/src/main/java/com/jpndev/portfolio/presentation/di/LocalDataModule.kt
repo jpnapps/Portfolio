@@ -1,6 +1,7 @@
 package com.jpndev.newsapiclient.presentation.di
 
 import com.jpndev.portfolio.data.db.ArticleDAO
+import com.jpndev.portfolio.data.db.DAO
 import com.jpndev.portfolio.data.repository.dataSource.LocalDataSource
 import com.jpndev.portfolio.data.repository.dataSourceImpl.LocalDataSourceImpl
 
@@ -18,9 +19,10 @@ class LocalDataModule {
     @Singleton
     @Provides
     fun provideLocalDataSource(
-        articleDAO: ArticleDAO
+        articleDAO: ArticleDAO,
+        pitemDAO: DAO
     ): LocalDataSource {
-       return LocalDataSourceImpl(articleDAO)
+       return LocalDataSourceImpl(articleDAO,pitemDAO)
     }
 
 }

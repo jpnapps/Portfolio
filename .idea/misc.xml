@@ -3,11 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/activity_add_pitem.xml" value="0.264" />
+        <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/activity_life_cycle.xml" value="0.22526041666666666" />
+        <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/activity_pmanage.xml" value="0.4" />
+        <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/activity_video_play.xml" value="0.24479166666666666" />
+        <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/activity_view_logos.xml" value="0.18541666666666667" />
+        <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/alert_cpay_refund.xml" value="0.264" />
+        <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/alert_ok.xml" value="0.21770833333333334" />
         <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/fragment_dashboard.xml" value="0.20989583333333334" />
         <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/fragment_home.xml" value="0.20989583333333334" />
-        <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/fragment_more.xml" value="0.536" />
+        <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/fragment_more.xml" value="0.264" />
         <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/fragment_notifications.xml" value="0.20989583333333334" />
         <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/fragment_top_qa.xml" value="0.20989583333333334" />
+        <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/rcv_item_pitem.xml" value="0.5324675324675324" />
         <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/xml/root_preferences.xml" value="0.27447916666666666" />
       </map>
     </option>

@@ -199,9 +199,9 @@
 
     <style name="Base_TXV_4" >
 
-        <item name="android:textColor">?attr/text_color_4</item>
+        <item name="android:textColor">?attr/text_color_2</item>
         <item name="android:fontFamily">@font/sofia_pro_medium</item>
-        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
         <item name="android:text">@string/small_text</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -253,7 +253,7 @@
     <style name="BASE_CARD_3" >
 
 
-        <item name="cardBackgroundColor">@color/transparent</item>
+        <item name="cardBackgroundColor">?attr/bg_fab_1</item>
         <item name="cardCornerRadius">@dimen/_10sdp</item>
         <item name="cardElevation">@dimen/_3sdp</item>
         <item name="cardMaxElevation">@dimen/_3sdp</item>

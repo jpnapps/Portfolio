@@ -1,5 +1,6 @@
 package com.jpndev.portfolio.ui.pmanage
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,8 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.beeone.techbank.sign.kyc.sumsub.PManageViewModel
-import com.beeone.techbank.sign.kyc.sumsub.PManageViewModelFactory
+import com.jpndev.portfolio.ui.pmanage.PManageViewModel
+import com.jpndev.portfolio.ui.pmanage.PManageViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.jpndev.newsapiclient.presentation.PItemAdapter
 import com.jpndev.portfolio.data.util.Resource
@@ -32,6 +33,8 @@ class PManageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPmanageBinding
 
 
+
+
     @Inject
     lateinit var pitemadapter: PItemAdapter
 
@@ -47,19 +50,43 @@ class PManageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPmanageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         viewModel= ViewModelProvider(this,factory).get(PManageViewModel::class.java)
        // setContentView(R.layout.activity_pmanage)
 
-
+        binding.viewmodel=viewModel
         pitemadapter.setOnItemClickListner {
+          /*  val bundle=Bundle().apply {
+                putSerializable("selected_item",it)
+            }*/
+            val intent = Intent(this@PManageActivity, AddPItemActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            intent.putExtra("selected_item",it)
+            startActivity(intent)
+
 /*            val bundle=Bundle().apply {
                 putSerializable("selected_item",it)
             }
             findNavController().navigate(R.id.action_savedFragment_to_infoFragment,bundle)*/
         }
+
+        binding.addBtn.setOnClickListener{
+
+            viewModel.showAddPItemActivity(activity = this)
+
+        }
+        binding.closeDimv.setOnClickListener{
+
+            onBackPressed()
+
+        }
         initRcv()
 
         viewNewsList()
+    }
+    override fun onBackPressed() {
+        // super.onBackPressed()
+        finish()
     }
 
     private fun viewObservers() {

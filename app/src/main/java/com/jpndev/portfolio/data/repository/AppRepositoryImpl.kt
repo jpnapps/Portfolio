@@ -25,8 +25,12 @@ class AppRepositoryImpl(
         return PListResponse()
     }*/
 
-    override suspend fun savePItem(item: PItem) {
-        localDataSource.savePItemtoDb(item)
+    override suspend fun savePItem(item: PItem) : Long{
+      return  localDataSource.savePItemtoDb(item)
+    }
+
+    override suspend fun updatePItem(item: PItem): Int {
+        return  localDataSource.updatePItem(item)
     }
 
     override suspend fun deletePItem(item: PItem) {

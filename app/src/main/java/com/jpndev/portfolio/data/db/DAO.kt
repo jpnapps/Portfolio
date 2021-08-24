@@ -9,7 +9,10 @@ import kotlinx.coroutines.flow.Flow
 interface DAO {
 
     @Insert(onConflict=OnConflictStrategy.REPLACE)
-    suspend fun insertPItem(pitem: PItem)
+    suspend fun insertPItem(pitem: PItem) : Long
+
+    @Update
+    suspend fun updatePItem(pitem: PItem) : Int
 
     @Query("DELETE FROM pitem_table")
     suspend fun deleteAllPItem()

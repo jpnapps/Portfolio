@@ -1,4 +1,4 @@
-package com.beeone.techbank.sign.kyc.sumsub
+package com.jpndev.portfolio.ui.pmanage
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

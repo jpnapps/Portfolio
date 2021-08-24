@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.jpndev.portfolio.ui.pmanage.AddPItemViewModel" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/top_clay"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -76,7 +85,7 @@
         android:backgroundTint="?attr/tint_2"
         android:textColor="?attr/btn_text_color_1"
         android:layout_height="wrap_content"
-        android:text="Save"/>
+        android:text="@{viewmodel.action_menu_text}"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
@@ -121,10 +130,12 @@
                 android:text="Login"
                 android:visibility="gone"
                 />
+            <!--    android:text="@string/hint_user_name"-->
             <EditText
                 style="@style/Base_TXV_4"
                 android:id="@+id/key1_edt"
-                android:text="@string/hint_user_name"
+
+                android:text="@={viewmodel.pitem.key1}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -143,6 +154,7 @@
                     android:layout_width="match_parent"
                     android:hint="@string/hint_user_name"
                     android:maxLines="1"
+                    android:text="@={viewmodel.pitem.value1}"
                     android:textColorHint="?attr/text_color_5"
                     android:textColor="?attr/text_color_1"
                     android:layout_height="wrap_content"
@@ -150,14 +162,16 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!--        android:text="@string/hint_pwd"-->
             <EditText
                 style="@style/Base_TXV_4"
                 android:id="@+id/key2_edt"
-                android:text="@string/hint_pwd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-            </EditText>
+                android:text="@={viewmodel.pitem.key2}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextInputLayout"
                 android:id="@+id/value2_til"
@@ -171,7 +185,7 @@
                     android:id="@+id/value2_edt"
                     android:layout_width="match_parent"
                     android:hint="@string/login_email_hint"
-
+                    android:text="@={viewmodel.pitem.value2}"
                     android:textColorHint="?attr/text_color_5"
                     android:textColor="?attr/text_color_1"
                     android:layout_height="wrap_content"
@@ -273,3 +287,4 @@ style="@style/BASE_FAB_1"
         />
     <!--        app:rippleColor="@color/purple_500"-->
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

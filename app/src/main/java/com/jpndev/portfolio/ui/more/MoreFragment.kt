@@ -13,7 +13,10 @@ import com.jpndev.portfolio.R
 import com.jpndev.portfolio.databinding.FragmentHomeBinding
 import com.jpndev.portfolio.databinding.FragmentMoreBinding
 import com.jpndev.portfolio.ui.home.HomeViewModel
+import com.jpndev.portfolio.ui.manage_log.ViewLogosActivity
 import com.jpndev.portfolio.ui.pmanage.PManageActivity
+import com.jpndev.portfolio.ui.study.actvity.LifeCycleActivity
+import com.jpndev.portfolio.ui.study.video.VideoPlayActivity
 
 class MoreFragment  : Fragment() {
 
@@ -48,6 +51,24 @@ class MoreFragment  : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.pwdManagerCard.setOnClickListener {
             val intent = Intent(activity, PManageActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            activity?.startActivity(intent)
+
+        }
+        binding.viewLogos.setOnClickListener {
+            val intent = Intent(activity, ViewLogosActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            activity?.startActivity(intent)
+
+        }
+        binding.liflecycleCard.setOnClickListener {
+            val intent = Intent(activity, LifeCycleActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            activity?.startActivity(intent)
+
+        }
+        binding.videoplayCard.setOnClickListener {
+            val intent = Intent(activity, VideoPlayActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             activity?.startActivity(intent)
 

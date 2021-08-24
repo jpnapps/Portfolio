@@ -35,12 +35,16 @@ class LocalDataSourceImpl(
     }
 
 
-    override suspend fun savePItemtoDb(item: PItem) {
-        pitemDAO.insertPItem(item)
+    override suspend fun savePItemtoDb(item: PItem) : Long{
+      return  pitemDAO.insertPItem(item)
     }
 
     override  fun getPItemsFromDB(): Flow<List<PItem>> {
         return pitemDAO.getPItems()
+    }
+
+    override suspend fun updatePItem(pitem: PItem): Int {
+        return pitemDAO.updatePItem(pitem)
     }
 
     override suspend fun deletePItem(item: PItem) {

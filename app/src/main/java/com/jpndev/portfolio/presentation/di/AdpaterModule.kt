@@ -1,5 +1,6 @@
 package com.jpndev.portfolio.presentation.di
 
+import com.jpndev.newsapiclient.presentation.PItemAdapter
 import com.jpndev.portfolio.presentation.ui.topqa.QAAdapter
 
 import dagger.Module
@@ -19,6 +20,15 @@ class AdpaterModule {
 
    ): QAAdapter {
       return QAAdapter()
+   }
+
+
+   @Singleton
+   @Provides
+   fun providePItemAdapter(
+
+   ): PItemAdapter {
+      return PItemAdapter()
    }
 }
 

@@ -1,4 +1,4 @@
-package com.beeone.techbank.sign.kyc.sumsub
+package  com.jpndev.portfolio.ui.pmanage
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
@@ -11,6 +11,9 @@ import com.google.gson.JsonObject
 import com.jpndev.portfolio.data.model.PItem
 import com.jpndev.portfolio.data.util.Resource
 import com.jpndev.portfolio.domain.usecase.UseCase
+import com.jpndev.portfolio.utils.AESUtils
+import com.jpndev.portfolio.utils.Event
+import com.jpndev.portfolio.utils.LogUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -26,14 +29,67 @@ class AddPItemViewModel (
      /*   @Inject
         lateinit var user: User
 */
+        var action_menu_text:String="Save"
+
+        var isUpdate:Boolean=false
+
+        var pitem: PItem = PItem()
+          //  get()=pitem
+
+
+        private val statusMessage = MutableLiveData<Event<String>>()
+        val message: LiveData<Event<String>>
+            get() = statusMessage
+
 
         fun deletePItem(article: PItem) =viewModelScope.launch {
             usecase.executeDeletePItrm(article)
+            pitem?.let{
+
+            }?:let{
+
+            }
         }
 
 
-        fun savePItem(article: PItem) =viewModelScope.launch {
-            usecase.executeSavePItem(article)
+        fun checkExcute() =viewModelScope.launch {
+            //    usecase.executeSavePItem(pitem)
+
+            if(isUpdate)
+                updatePItem()
+            else
+               savePItem()
+
+        }
+
+        fun savePItem() =viewModelScope.launch {
+        //    usecase.executeSavePItem(pitem)
+            usecase.logsource.addLog("before ="+ pitem.value2)
+            pitem.value2= AESUtils.encrypt(pitem.value2)
+            usecase.logsource.addLog("after= "+ pitem.value2)
+
+            val newRowId =    usecase.executeSavePItem(pitem)
+            if (newRowId > -1) {
+                statusMessage.value = Event("Added Successfully $newRowId")
+            } else {
+                statusMessage.value = Event("Error Occurred")
+            }
+        }
+
+        fun updatePItem() =viewModelScope.launch {
+            //    usecase.executeSavePItem(pitem)
+
+            usecase.logsource.addLog("up before ="+ pitem.value2)
+            pitem.value2= AESUtils.encrypt(pitem.value2)
+            usecase.logsource.addLog("up after= "+ pitem.value2)
+
+
+            val newRowId =    usecase.executeUpdatePItem(pitem)
+            if (newRowId > -1) {
+                statusMessage.value = Event("Updated Successfully $newRowId")
+            } else {
+                statusMessage.value = Event("Error Occurred")
+            }
         }
 
         fun getSavedPItems(): LiveData<List<PItem>> = liveData<List<PItem>>{

@@ -10,8 +10,10 @@ interface LocalDataSource {
      suspend fun deleteArticle(item : Article)
      suspend fun clearAll()
 
-     suspend fun savePItemtoDb(item : PItem)
+
+     suspend fun savePItemtoDb(item : PItem): Long
      fun getPItemsFromDB(): Flow<List<PItem>>
+     suspend fun updatePItem(pitem: PItem) : Int
      suspend fun deletePItem(item : PItem)
      suspend fun clearAllPItems()
 }

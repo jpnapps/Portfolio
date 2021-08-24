@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.jpndev.portfolio.data.db.AppDatabase
 import com.jpndev.portfolio.data.db.ArticleDAO
+import com.jpndev.portfolio.data.db.DAO
 
 import dagger.Module
 import dagger.Provides
@@ -31,6 +32,12 @@ class DatabaseModule {
     @Provides
     fun providesArticleDAO(database: AppDatabase): ArticleDAO {
         return  database.articleDao()
+    }
+
+    @Singleton
+    @Provides
+    fun providesDAO(database: AppDatabase): DAO {
+        return  database.appDao()
     }
 }
 
