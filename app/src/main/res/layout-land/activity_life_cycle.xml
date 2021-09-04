@@ -11,7 +11,7 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/top_clay"
-
+android:background="@color/teal_700"
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/g_h_left"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.04"/>
+            app:layout_constraintGuide_percent="0.08"/>
         <!--    <com.jpndev.utilitylibrary.DeviceFitImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/g_h_right"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.98"/>
+            app:layout_constraintGuide_percent="0.94"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/save_btn"
             app:layout_constraintTop_toBottomOf="@+id/guideline_top"
@@ -132,7 +132,6 @@
 android:textColor="@color/white"
                     android:text="@={viewmodel.heading}"
 
-
                     />
                 <EditText
                     android:id="@+id/head2_txv"
@@ -143,20 +142,6 @@ android:textColor="@color/white"
 
                     />
 <!--   android:text="@={viewmodel.heading}"-->
-
-                <TextView
-                    android:id="@+id/class_txv"
-                    style="@style/Base_TXV_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:maxLines="250"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:textColor="@color/white"
-                    android:text="@={viewmodel.heading}"
-
-                    />
-
-
                 <TextView
                     android:id="@+id/lifecyle_txv"
                     style="@style/Base_TXV_3"
@@ -166,6 +151,17 @@ android:textColor="@color/white"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:textColor="@color/white"
                     android:text="@={viewmodel.text}"
+
+                    />
+                <TextView
+                    android:id="@+id/class_txv"
+                    style="@style/Base_TXV_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:maxLines="250"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:textColor="@color/white"
+                    android:text="@={viewmodel.heading}"
 
                     />
 

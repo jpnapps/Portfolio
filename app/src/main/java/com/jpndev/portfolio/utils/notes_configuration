@@ -1,4 +1,12 @@
 
+backpress
+  - onRestart
+
+singletop,singletask
+  -onNewIntent
+
+
+
  Test Case 1
        android:configChanges="orientation|keyboardHidden|screenSize"
 
@@ -20,6 +28,7 @@
        -we can set views using onSaveInstanceState and onRestoreInstanceState.
        -Asyntask will destory ..
        -layout -land folder layuts will work
+       -editext value not cleared
 
    @Override
     protected void onSaveInstanceState(Bundle outState) {

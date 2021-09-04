@@ -16,6 +16,7 @@ import com.jpndev.portfolio.ui.home.HomeViewModel
 import com.jpndev.portfolio.ui.manage_log.ViewLogosActivity
 import com.jpndev.portfolio.ui.pmanage.PManageActivity
 import com.jpndev.portfolio.ui.study.actvity.LifeCycleActivity
+import com.jpndev.portfolio.ui.study.download.ManageDownloadActivity
 import com.jpndev.portfolio.ui.study.video.VideoPlayActivity
 
 class MoreFragment  : Fragment() {
@@ -69,6 +70,12 @@ class MoreFragment  : Fragment() {
         }
         binding.videoplayCard.setOnClickListener {
             val intent = Intent(activity, VideoPlayActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            activity?.startActivity(intent)
+
+        }
+        binding.downloadCard.setOnClickListener {
+            val intent = Intent(activity, ManageDownloadActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             activity?.startActivity(intent)
 

@@ -1,6 +1,8 @@
 package com.jpndev.portfolio.data.repository.dataSourceImpl
 
+import android.content.Context
 import com.jpndev.portfolio.utils.LogUtils
+import com.jpndev.portfolio.utils.ToastHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,8 +21,15 @@ class LogSourceImpl {
         list.addAll(temp)
         }
     }
+    fun deleteLogs(context: Context?=null) {
+        list.clear()
+        context?.let{
+            ToastHandler.newInstance(context).mustShowToast("Logs Deleted")
+        }
+    }
 
       fun getLogs(): List<String> {
+         // LogUtils.LOGD("jp","list size = "+list.size)
         return  list
     }
 }

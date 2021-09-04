@@ -8,6 +8,8 @@ import com.jpndev.portfolio.data.repository.dataSource.RemoteDataSource
 import com.jpndev.portfolio.data.util.Resource
 import com.jpndev.portfolio.domain.repository.AppRepository
 import kotlinx.coroutines.flow.Flow
+import okhttp3.ResponseBody
+import retrofit2.Call
 
 import retrofit2.Response
 
@@ -41,6 +43,10 @@ class AppRepositoryImpl(
         return localDataSource.getPItemsFromDB()
     }
 
+    override suspend fun getDownloadBody(url: String): Resource<ResponseBody> {
+        return responseToResourceBody(remoteDataSource.getDownloadBody(url))
+    }
+
 
     private fun responseToResource(response:Response<APIResponse>):Resource<APIResponse>{
         if(response.isSuccessful){
@@ -48,6 +54,15 @@ class AppRepositoryImpl(
                 return Resource.Success(result)
             }
         }
+        return Resource.Error(response.message())
+    }
+
+    private fun responseToResourceBody(response: Response<ResponseBody>):Resource<ResponseBody>{
+        response.body()?.let {
+            result->
+            return Resource.Success(result)
+        }
+
         return Resource.Error(response.message())
     }
 

@@ -23,9 +23,10 @@ import java.lang.Exception
 import javax.inject.Inject
 import kotlinx.coroutines.flow.collect
 
+const val separator = "\n"
 class ViewLogosViewModel (
     private val app: Application,
-    private val usecase: UseCase
+    public val usecase: UseCase
 
     ) : AndroidViewModel(app)
     {
@@ -45,18 +46,26 @@ class ViewLogosViewModel (
 
 
         init {
-            usecase.logsource.addLog("init jjjjjjjjjjjjjjjjj ")
+            usecase.logsource.addLog("init ViewLogosViewModel ")
 
-            val separator = "\n"
+                text.value  ="Logs"
 
-            text.value  = usecase.logsource.getLogs().takeLast(10).joinToString(separator)
+                text.value  =  text.value + separator+usecase.logsource.getLogs().takeLast(100000).joinToString(separator)
 
         }
         private val statusMessage = MutableLiveData<Event<String>>()
         val message: LiveData<Event<String>>
             get() = statusMessage
 
+        fun reFresh() =viewModelScope.launch {
+            text.value  = usecase.logsource.getLogs().takeLast(1000).joinToString(separator)
+        }
 
+        fun deleteLogs() =viewModelScope.launch {
+            usecase.logsource.deleteLogs(app)
+
+            text.value  = usecase.logsource.getLogs().takeLast(1000).joinToString(separator)
+        }
 
         fun showPManageActivity(activity: Activity) =viewModelScope.launch {
             val intent = Intent(activity, PManageActivity::class.java)

@@ -147,10 +147,35 @@
 
             style="@style/Base_TXV_3"
             android:text="@string/videoplay"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="5dp"
+        app:contentPadding="@dimen/_8sdp"
+        style="@style/BASE_CARD_1"
+        android:layout_marginTop="5dp"
+
+
+        android:id="@+id/download_card"
+        app:layout_constraintLeft_toRightOf="@+id/g_xleft"
+        app:layout_constraintRight_toLeftOf="@+id/g_xright"
+        app:layout_constraintTop_toBottomOf="@+id/videoplay_card"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/download_txv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="@dimen/_6sdp"
+
+            style="@style/Base_TXV_3"
+            android:text="@string/download"
+    />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

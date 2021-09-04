@@ -13,6 +13,7 @@ import com.google.gson.JsonObject
 import com.jpndev.portfolio.data.model.PItem
 import com.jpndev.portfolio.data.util.Resource
 import com.jpndev.portfolio.domain.usecase.UseCase
+import com.jpndev.portfolio.ui.study.actvity.LifeCycleActivity
 import com.jpndev.portfolio.utils.LogUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -65,6 +66,11 @@ class PManageViewModel (
 
         fun showAddPItemActivity(activity: Activity) =viewModelScope.launch {
             val intent = Intent(activity, AddPItemActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            activity?.startActivity(intent)
+        }
+        fun showLifeCycleActivity(activity: Activity) =viewModelScope.launch {
+            val intent = Intent(activity, LifeCycleActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             activity?.startActivity(intent)
         }

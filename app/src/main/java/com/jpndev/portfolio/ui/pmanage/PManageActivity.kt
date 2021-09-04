@@ -77,8 +77,8 @@ class PManageActivity : AppCompatActivity() {
         }
         binding.closeDimv.setOnClickListener{
 
-            onBackPressed()
-
+           // onBackPressed()
+            viewModel.showLifeCycleActivity(activity = this)
         }
         initRcv()
 

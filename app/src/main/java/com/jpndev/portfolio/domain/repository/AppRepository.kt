@@ -5,6 +5,7 @@ import com.jpndev.portfolio.data.model.PItem
 import com.jpndev.portfolio.data.model.PListResponse
 import com.jpndev.portfolio.data.util.Resource
 import kotlinx.coroutines.flow.Flow
+import okhttp3.ResponseBody
 
 interface AppRepository {
 
@@ -15,5 +16,7 @@ interface AppRepository {
     suspend fun updatePItem(article: PItem): Int
     suspend fun deletePItem(article: PItem)
     fun getPItems(): Flow<List<PItem>>
+
+    suspend fun getDownloadBody(url: String):  Resource<ResponseBody>
 
 }

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.os.Handler
 import androidx.lifecycle.*
 
 
@@ -31,7 +32,7 @@ class LifeCycleViewModel (
      /*   @Inject
         lateinit var user: User
 */
-        var heading:String="INIT"
+       // var heading:String="head"
 
         var isUpdate:Boolean=false
 
@@ -39,12 +40,14 @@ class LifeCycleViewModel (
           //  get()=pitem
 
        // var text:LiveData<String>="var init"
-
+       var heading = MutableLiveData<String>()
         var text = MutableLiveData<String>()
 
         var run_text = MutableLiveData<String>()
         init {
             text.value = "init"
+            heading.value = "head init"
+            runTimer()
         }
         private val statusMessage = MutableLiveData<Event<String>>()
         val message: LiveData<Event<String>>
@@ -66,6 +69,29 @@ class LifeCycleViewModel (
         fun addLog(text: String,tag:String="jp") =viewModelScope.launch {
             usecase.logsource.addLog(text,tag)
 
+        }
+        var count = 0
+         fun runTimer() {
+
+
+
+            // Creates a new Handler
+            val handler = Handler()
+
+            // Call the post() method,
+            // passing in a new Runnable.
+            // The post() method processes
+            // code without a delay,
+            // so the code in the Runnable
+            // will run almost immediately.
+            handler.post(object : Runnable {
+                override fun run() {
+
+                    count=count+1
+                    heading.value = "head init "+count
+                    handler.postDelayed(this, 1000)
+                }
+            })
         }
 
 

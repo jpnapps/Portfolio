@@ -7,6 +7,7 @@ import com.jpndev.portfolio.ui.manage_log.ViewLogosViewModelFactory
 import com.jpndev.portfolio.ui.pmanage.AddPItemViewModelFactory
 import com.jpndev.portfolio.ui.pmanage.PManageViewModelFactory
 import com.jpndev.portfolio.ui.study.actvity.LifeCycleViewModelFactory
+import com.jpndev.portfolio.ui.study.download.DownloadViewModelFactory
 import com.jpndev.portfolio.ui.study.video.VideoPlayViewModelFactory
 
 import dagger.Module
@@ -94,6 +95,18 @@ class FactoryModule {
         useCase: UseCase
     ): VideoPlayViewModelFactory {
         return VideoPlayViewModelFactory(
+                application,
+                useCase
+
+        )
+    }
+    @Singleton
+    @Provides
+    fun provideDownloadViewModelFactory(
+        application: Application,
+        useCase: UseCase
+    ): DownloadViewModelFactory {
+        return DownloadViewModelFactory(
                 application,
                 useCase
 

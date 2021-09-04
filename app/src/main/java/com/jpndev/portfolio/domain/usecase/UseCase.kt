@@ -10,6 +10,7 @@ import com.jpndev.portfolio.data.util.Resource
 import com.jpndev.portfolio.domain.repository.AppRepository
 import com.jpndev.portfolio.utils.PrefUtils
 import kotlinx.coroutines.flow.Flow
+import okhttp3.ResponseBody
 import javax.inject.Inject
 
 /* @Inject constructor */
@@ -27,7 +28,9 @@ class UseCase (private val repository: AppRepository, private val appContext: Co
         return repository.getPItems()
     }
 
-
+    suspend fun executeDownloadRequest(url : String): Resource<ResponseBody> {
+        return repository.getDownloadBody(url)
+    }
     /*suspend fun execute():Flow<List<Article>>{
         return newsRepository.getSavedNews()
     }*/

@@ -53,6 +53,60 @@
             android:id="@+id/g_h_right"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.98"/>
+
+        <com.jpndev.portfolio.custom.DeviceFitImageView
+            android:id="@+id/delete_dimv"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:parameter="fixed_ratio"
+            android:scaleType="fitCenter"
+            app:width_percentage="8"
+
+            app:layout_constraintTop_toBottomOf="@+id/guideline_top"
+
+            android:layout_marginRight="@dimen/_10sdp"
+            app:layout_constraintRight_toLeftOf="@+id/refresh_dimv"
+            app:height_percentage="4"
+            android:src="@drawable/ic_delete_forever"
+            android:tint="@color/red"
+            />
+        <com.jpndev.portfolio.custom.DeviceFitImageView
+            android:id="@+id/refresh_dimv"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:parameter="fixed_ratio"
+            android:scaleType="fitCenter"
+            app:width_percentage="8"
+
+            app:layout_constraintTop_toBottomOf="@+id/guideline_top"
+
+            android:layout_marginRight="@dimen/_10sdp"
+            app:layout_constraintRight_toLeftOf="@+id/json_req_dimv"
+            app:height_percentage="4"
+            android:src="@drawable/ic_refresh_24"
+            android:tint="@color/green"
+            />
+
+        <com.jpndev.portfolio.custom.DeviceFitImageView
+            android:id="@+id/json_req_dimv"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:parameter="fixed_ratio"
+            android:scaleType="fitCenter"
+            app:width_percentage="8"
+
+            app:layout_constraintTop_toBottomOf="@+id/guideline_top"
+
+            android:layout_marginRight="@dimen/_10sdp"
+            app:layout_constraintRight_toLeftOf="@+id/save_btn"
+            app:height_percentage="4"
+            android:src="@drawable/ic_copy_24"
+
+            />
+        
         <com.google.android.material.button.MaterialButton
             android:id="@+id/save_btn"
             app:layout_constraintTop_toBottomOf="@+id/guideline_top"

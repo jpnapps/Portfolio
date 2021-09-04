@@ -7,11 +7,11 @@
 
         <variable
             name="viewmodel"
-            type="com.jpndev.portfolio.ui.study.actvity.LifeCycleViewModel" />
+            type="com.jpndev.portfolio.ui.study.download.DownloadViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/top_clay"
-
+android:background="@color/black_5"
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -70,6 +70,7 @@
             app:layout_constraintGuide_percent="0.98"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/save_btn"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/guideline_top"
             app:layout_constraintRight_toLeftOf="@+id/g_h_right"
             style="@style/Widget.MaterialComponents.Button"
@@ -79,13 +80,13 @@
             android:layout_marginTop="@dimen/_1sdp"
             android:layout_marginBottom="@dimen/_1sdp"
             android:layout_width="wrap_content"
-            android:background="?attr/bg_1"
+            android:background="?attr/bg_view_1"
 
             android:textSize="@dimen/_14ssp"
             android:backgroundTint="?attr/tint_2"
             android:textColor="?attr/btn_text_color_1"
             android:layout_height="wrap_content"
-            android:text="Save"/>
+          />
 
         <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
@@ -115,9 +116,7 @@
 
             >
 
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+
 
             <LinearLayout
                 android:padding="@dimen/_14sdp"
@@ -126,70 +125,51 @@
 
                 android:orientation="vertical"
                 >
-                <EditText
-                    android:id="@+id/head_txv"
-                    style="@style/Base_TXV_3"
-android:textColor="@color/white"
-                    android:text="@={viewmodel.heading}"
-
-
-                    />
-                <EditText
-                    android:id="@+id/head2_txv"
-                    style="@style/Base_TXV_3"
-                    android:textColor="@color/white"
-
-                    android:text=""
-
-                    />
-<!--   android:text="@={viewmodel.heading}"-->
 
                 <TextView
-                    android:id="@+id/class_txv"
-                    style="@style/Base_TXV_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:maxLines="250"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:textColor="@color/white"
-                    android:text="@={viewmodel.heading}"
+                    style="@style/Base_TXV_2"
+                    android:text="File"
+                    android:visibility="visible"
 
                     />
-
-
-                <TextView
-                    android:id="@+id/lifecyle_txv"
-                    style="@style/Base_TXV_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:maxLines="250"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:textColor="@color/white"
+                <!--    android:text="@string/hint_user_name"-->
+                <EditText
+                    android:layout_marginTop="@dimen/_10sdp"
+                    style="@style/Base_TXV_5"
+                    android:id="@+id/key1_edt"
+                   android:hint="@string/hint_url"
+                    android:textColorHint="?attr/text_color_5"
+                    android:textColor="?attr/text_color_1"
                     android:text="@={viewmodel.text}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+<!--             android:text="@={viewmodel.pitem.key1}"-->
+                </EditText>
 
-                    />
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/download_btn"
+                    android:visibility="visible"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingLeft="@dimen/_40sdp"
+                    android:paddingRight="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_marginBottom="@dimen/_28sdp"
+                    android:layout_width="wrap_content"
+                    android:background="?attr/bg_view_1"
 
+                    android:textSize="@dimen/_14ssp"
+                    android:backgroundTint="?attr/tint_2"
+                    android:textColor="?attr/btn_text_color_1"
+                    android:layout_height="wrap_content"
+                    android:text="Download"/>
 
 
 
 
             </LinearLayout>
-            </androidx.core.widget.NestedScrollView>
         </androidx.cardview.widget.CardView>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_fab"
-            style="@style/BASE_FAB_1"
-            android:visibility="gone"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:clickable="true"
-            android:src="@android:drawable/ic_input_add"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
-        <!--        app:rippleColor="@color/purple_500"-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
