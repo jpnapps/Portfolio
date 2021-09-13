@@ -1,0 +1,61 @@
+Ref
+  http://baiduhix.blogspot.com/2016/02/handler-vs-asynctask-handler-vs-timer.html
+  https://stackoverflow.com/questions/60545934/android-handler-postdelayed-how-does-it-achieve-the-delay
+  https://pierrchen.blogspot.com/2015/08/android-concurrent-programming-looper.html
+
+Handler
+
+    default Constructor: handlers binded to Thread from which they was instantiated from.
+
+    run Ui/Main thread
+
+       work  Handler(Looper.getMainLooper()) , Handler()
+
+    run other threads
+
+        work only Handler(Looper.getMainLooper())
+
+
+    post
+       - SystemClock.uptimeMillis()
+
+    postDelayed
+        - SystemClock.uptimeMillis()+delayed
+
+    postAtTime
+         - setTime
+
+    postAtFrontOfQueue
+          - run First  even order last
+
+
+
+
+ runOnUiThread
+
+   public final void runOnUiThread(Runnable action) {
+        if (Thread.currentThread() != mUiThread) {
+            mHandler.post(action);
+        } else {
+            action.run();
+        }
+
+   runOnUiThread works inside other thread in Activity
+
+    Activity
+           runOnUiThread{}
+    Fragment
+           activity. runOnUiThread{}
+
+
+Handler vs Thread
+
+  A thread must be created to execute long running jobs.
+  A Handler is very convenient object to communicate between 2 threads
+  for instance : a background thread need to update the UI.
+  You can use a Handler to post some Runnable from your background thread to the UI thread
+
+  Use a thread to do heavy jobs!
+  Handler if your background thread will trigger some job to be done in another thread - most of the time the UI thread
+
+
