@@ -58,13 +58,13 @@ class ViewLogosViewModel (
             get() = statusMessage
 
         fun reFresh() =viewModelScope.launch {
-            text.value  = usecase.logsource.getLogs().takeLast(1000).joinToString(separator)
+            text.value  = usecase.logsource.getLogs().takeLast(100000).joinToString(separator)
         }
 
         fun deleteLogs() =viewModelScope.launch {
             usecase.logsource.deleteLogs(app)
 
-            text.value  = usecase.logsource.getLogs().takeLast(1000).joinToString(separator)
+            text.value  = usecase.logsource.getLogs().takeLast(100000).joinToString(separator)
         }
 
         fun showPManageActivity(activity: Activity) =viewModelScope.launch {

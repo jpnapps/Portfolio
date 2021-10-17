@@ -3,7 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/drawable/ic_android_24dp.xml" value="0.10740740740740741" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/activity_add_pitem.xml" value="0.4" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/activity_background_thread.xml" value="0.10572916666666667" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/activity_intent_service.xml" value="0.10572916666666667" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/activity_pmanage.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/activity_service_main.xml" value="0.264" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/activity_view_logos.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/fragment_egg_timer.xml" value="0.23854166666666668" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/fragment_more.xml" value="0.23854166666666668" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/fragment_top_qa.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/rcv_item_pitem.xml" value="0.536" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/layout/rcv_item_qa.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidWs/Me/Portfolio/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout-land/activity_life_cycle.xml" value="0.225" />
         <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/activity_add_pitem.xml" value="0.264" />
         <entry key="..\:/Work/Android/Projects/me/JPNapp/app/src/main/res/layout/activity_life_cycle.xml" value="0.22526041666666666" />

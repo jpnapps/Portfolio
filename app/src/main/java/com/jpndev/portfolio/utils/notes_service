@@ -1,0 +1,8 @@
+
+
+java.lang.SecurityException: Permission Denial:
+startForeground from pid=xxx, uid=xxxx requires android.permission.FOREGROUND_SERVICE
+
+WorkManager
+ -Foreground
+   cancel : even child thread inside worker will  stop

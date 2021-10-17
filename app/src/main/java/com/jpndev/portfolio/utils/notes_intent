@@ -3,6 +3,7 @@ Ref
    https://ostoday.org/android/what-is-sticky-intent-in-android.html
 
 pending intent
-A Pending Intent specifies an action to take in the future. It lets you pass a future Intent to another application and allow that application to execute that Intent as if it had the same permissions as your application, whether or not your application is still around when the Intent is eventually invoked.
+A Pending Intent specifies an action to take in the future.
+ It lets you pass a future Intent to another application and allow that application to execute that Intent as if it had the same permissions as your application, whether or not your application is still around when the Intent is eventually invoked.
 Source: https://ostoday.org/android/what-is-sticky-intent-in-android.html
 

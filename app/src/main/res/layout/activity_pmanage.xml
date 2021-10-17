@@ -51,21 +51,41 @@
         android:id="@+id/g_h_right"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.98"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/backupBtn"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_top"
+        app:layout_constraintRight_toLeftOf="@+id/add_btn"
+
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="@dimen/_2sdp"
+        android:paddingRight="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_1sdp"
+        android:layout_marginBottom="@dimen/_1sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_width="wrap_content"
+        android:background="?attr/bg_view_2"
+
+        android:textSize="@dimen/_14ssp"
+        android:backgroundTint="?attr/bg_view_2"
+        android:textColor="?attr/btn_text_color_1"
+        android:layout_height="wrap_content"
+        android:text=" BackUp "/>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/add_btn"
         app:layout_constraintTop_toBottomOf="@+id/guideline_top"
         app:layout_constraintRight_toLeftOf="@+id/g_h_right"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_gravity="center_horizontal"
-        android:paddingLeft="@dimen/_1sdp"
-        android:paddingRight="@dimen/_1sdp"
+        android:paddingLeft="@dimen/_2sdp"
+        android:paddingRight="@dimen/_2sdp"
         android:layout_marginTop="@dimen/_1sdp"
         android:layout_marginBottom="@dimen/_1sdp"
         android:layout_width="wrap_content"
-        android:background="?attr/bg_view_1"
+        android:background="@color/black_color_2"
 
         android:textSize="@dimen/_14ssp"
-        android:backgroundTint="?attr/tint_2"
+
         android:textColor="?attr/btn_text_color_1"
         android:layout_height="wrap_content"
         android:text="Add"/>

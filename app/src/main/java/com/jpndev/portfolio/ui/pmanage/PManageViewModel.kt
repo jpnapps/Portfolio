@@ -6,6 +6,10 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.widget.Toast
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.*
 
 
@@ -20,6 +24,7 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
 import kotlinx.coroutines.flow.collect
+import java.util.concurrent.Executor
 
 class PManageViewModel (
     private val app: Application,
@@ -115,6 +120,72 @@ class PManageViewModel (
 
 
         }
+
+
+
+        private lateinit var executor: Executor
+        private lateinit var biometricPrompt: BiometricPrompt
+        public fun setBioPrompt(activity: FragmentActivity, lmbd: () -> Unit) {
+            executor = ContextCompat.getMainExecutor(activity)
+            biometricPrompt = BiometricPrompt(activity, executor,
+                object : BiometricPrompt.AuthenticationCallback() {
+                    override fun onAuthenticationError(errorCode: Int,
+                                                       errString: CharSequence) {
+                        super.onAuthenticationError(errorCode, errString)
+                        Toast.makeText(app,
+                            "Authentication error: $errString", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                    override fun onAuthenticationSucceeded(
+                        result: BiometricPrompt.AuthenticationResult) {
+                        super.onAuthenticationSucceeded(result)
+                        Toast.makeText(app,
+                            "Authentication succeeded!", Toast.LENGTH_SHORT)
+                            .show()
+                        lmbd()
+                    }
+
+                    override fun onAuthenticationFailed() {
+                        super.onAuthenticationFailed()
+                        Toast.makeText(app, "Authentication failed",
+                            Toast.LENGTH_SHORT)
+                            .show()
+
+                        // finish()
+                    }
+                })
+        }
+
+        public fun setBioAuth(activity: FragmentActivity, lmbd: () -> Unit) {
+            // Allows user to authenticate using either a Class 3 biometric or
+// their lock screen credential (PIN, pattern, or password).
+            setBioPrompt(activity,lmbd)
+            val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Biometric login for my app")
+                .setSubtitle("Log in using your biometric credential")
+               // .setNegativeButtonText("Use account password")
+                .setDeviceCredentialAllowed(true)
+                .build()
+            // Can't call setNegativeButtonText() and
+            // setAllowedAuthenticators(... or DEVICE_CREDENTIAL) at the same time.
+            // .setNegativeButtonText("Use account password")
+
+            biometricPrompt.authenticate(promptInfo)
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

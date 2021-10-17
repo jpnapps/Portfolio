@@ -1,5 +1,8 @@
 package com.jpndev.portfolio.ui.pmanage
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,8 +19,12 @@ import com.jpndev.portfolio.ui.pmanage.PManageViewModel
 import com.jpndev.portfolio.ui.pmanage.PManageViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.jpndev.newsapiclient.presentation.PItemAdapter
+import com.jpndev.portfolio.MainActivity
 import com.jpndev.portfolio.data.util.Resource
 import com.jpndev.portfolio.databinding.ActivityPmanageBinding
+import com.jpndev.portfolio.utils.AESUtils
+import com.jpndev.portfolio.utils.JAESUtils
+import com.jpndev.portfolio.utils.ToastHandler
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -25,7 +32,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class PManageActivity : AppCompatActivity() {
+class  PManageActivity : AppCompatActivity() {
 
     @Inject
     lateinit var  factory: PManageViewModelFactory
@@ -55,24 +62,46 @@ class PManageActivity : AppCompatActivity() {
        // setContentView(R.layout.activity_pmanage)
 
         binding.viewmodel=viewModel
-        pitemadapter.setOnItemClickListner {
-          /*  val bundle=Bundle().apply {
-                putSerializable("selected_item",it)
-            }*/
-            val intent = Intent(this@PManageActivity, AddPItemActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            intent.putExtra("selected_item",it)
-            startActivity(intent)
+        pitemadapter.setViewModel(viewModel)
+        AESUtils.logsource=  viewModel?.getUseCase()?.logsource
 
-/*            val bundle=Bundle().apply {
-                putSerializable("selected_item",it)
-            }
-            findNavController().navigate(R.id.action_savedFragment_to_infoFragment,bundle)*/
+
+
+
+        pitemadapter.setOnItemClickListner {
+
+           /* viewModel.setBioPrompt(this@PManageActivity,{
+                val intent = Intent(this@PManageActivity, AddPItemActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                intent.putExtra("selected_item",it)
+                startActivity(intent)
+
+
+            })*/
+            viewModel.setBioAuth(this@PManageActivity,{
+                val intent = Intent(this@PManageActivity, AddPItemActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                intent.putExtra("selected_item",it)
+                startActivity(intent)})
+
         }
 
         binding.addBtn.setOnClickListener{
 
             viewModel.showAddPItemActivity(activity = this)
+
+
+        }
+
+        binding.backupBtn.setOnClickListener{
+            viewModel.setBioAuth(this@PManageActivity,{
+                configBackup()}
+
+            )
+
+
+
+
 
         }
         binding.closeDimv.setOnClickListener{
@@ -84,112 +113,35 @@ class PManageActivity : AppCompatActivity() {
 
         viewNewsList()
     }
+
+    private fun configBackup() {
+        val list=pitemadapter.getItems()
+        var temp=""
+        list?.let{
+            for (item in it) {
+                temp=temp+item.key1+": "+getValueString(item.value1_encrypted,item.value1,"Data formatted") + "\n"
+                temp=temp+item.key2+": "+getValueString(item.value2_encrypted,item.value2,"Data formatted") + "\n"
+            }
+        }
+        var clipboardManager = getSystemService(
+            Context.CLIPBOARD_SERVICE) as ClipboardManager?
+
+
+        var clipData = ClipData.newPlainText("BackUp  ",temp)
+        clipboardManager!!.setPrimaryClip(clipData)
+        ToastHandler.newInstance(this@PManageActivity).mustShowToast("Copied data")
+    }
+
+    private fun getValueString(value1Encrypted: Boolean, value1: String, temp: String): String {
+      //   var text=""
+         return if(value1Encrypted) JAESUtils.decrypt(value1) ?: temp else value1
+
+    }
+
     override fun onBackPressed() {
         // super.onBackPressed()
         finish()
     }
-
-    private fun viewObservers() {
-
-
-
-     /*   viewModel.mld_Progress.observe(this,{response->
-            when(response)
-            {
-                is Resource.Loading->{
-                    setLoading()
-                    showProgress()
-                }
-                is Resource.Success->{
-                    hideProgress()
-
-                }
-                is Resource.HideLoading->{
-                    hideProgress()
-
-                }
-                is Resource.ShowAlert->{
-                    hideProgress()
-                    if(BuildConfig.isShowApi || response.isShow) {
-                        response.message?.let {
-                            showAlertDelay(message = it, bg_color = response.color)
-                        }
-                    }
-                }
-                is Resource.Error->{
-                    hideProgress()
-                    response.message?.let{
-                        showErrorAlertDelay(message = it, message2 = it)
-                    }
-                }
-            }
-
-        })*/
-
-    }
-
- /*   private fun setSearchView() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                viewModel.getSearchedNews(country,p0.toString(),page)
-                viewSearchNewsList()
-                return false
-            }
-
-            override fun onQueryTextChange(p0: String?): Boolean {
-                MainScope().launch {
-                    delay(2000)
-                    viewModel.getSearchedNews(country,p0.toString(),1)
-                    viewSearchNewsList()
-                }
-
-                return false
-            }
-
-        })
-        binding.searchView.setOnCloseListener(object : SearchView.OnCloseListener{
-            override fun onClose(): Boolean {
-                initRcv()
-                viewNewsList()
-                return false
-            }
-
-        })
-    }
-
-    private fun viewSearchNewsList() {
-
-        viewModel.searchedNews.observe(viewLifecycleOwner,{response->
-            when(response)
-            {
-                is Resource.Loading->{
-                    showProgressBar()
-                }
-                is Resource.Success->{
-                    hideProgressBar()
-                    response.data?.let {
-                        pitemadapter.differ.submitList(it.articles.toList())
-                        if(it.totalResults%20==0)
-                        {
-                            pages=it.totalResults/20
-                        }
-                        else
-                        {
-                            pages=it.totalResults/20+1
-                        }
-                        isLastPage=pages==page
-                    }
-                }
-                is Resource.Error->{
-                    hideProgressBar()
-                    response.message?.let{
-                        Toast.makeText(activity,"Error Search: "+it, Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-
-        })
-    }*/
 
 
 

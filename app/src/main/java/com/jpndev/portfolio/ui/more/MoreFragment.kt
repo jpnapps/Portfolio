@@ -9,9 +9,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceFragmentCompat
+import com.jpndev.portfolio.MainActivity
 import com.jpndev.portfolio.R
 import com.jpndev.portfolio.databinding.FragmentHomeBinding
 import com.jpndev.portfolio.databinding.FragmentMoreBinding
+import com.jpndev.portfolio.presentation.ui.MainViewModel
+import com.jpndev.portfolio.presentation.ui.servicestask.foregroundservices.MainFServiceActivity
 import com.jpndev.portfolio.ui.home.HomeViewModel
 import com.jpndev.portfolio.ui.manage_log.ViewLogosActivity
 import com.jpndev.portfolio.ui.pmanage.PManageActivity
@@ -27,6 +30,9 @@ class MoreFragment  : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    lateinit var viewMainModel: MainViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,10 +56,20 @@ class MoreFragment  : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.pwdManagerCard.setOnClickListener {
+        viewMainModel=(activity as MainActivity ).viewMainModel
+        viewMainModel.setBioPrompt(activity as MainActivity,{
             val intent = Intent(activity, PManageActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             activity?.startActivity(intent)
+        })
+
+        binding.pwdManagerCard.setOnClickListener {
+
+         //  viewMainModel.setBioAuth()
+            val intent = Intent(activity, PManageActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            activity?.startActivity(intent)
+
 
         }
         binding.viewLogos.setOnClickListener {
@@ -80,7 +96,12 @@ class MoreFragment  : Fragment() {
             activity?.startActivity(intent)
 
         }
+        binding.serviceCard.setOnClickListener {
+            val intent = Intent(activity, MainFServiceActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            activity?.startActivity(intent)
 
+        }
     }
 
     override fun onDestroyView() {

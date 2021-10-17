@@ -1,9 +1,12 @@
 package  com.jpndev.portfolio.ui.pmanage
 import android.app.Application
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+
 import androidx.lifecycle.*
 
 
@@ -11,9 +14,7 @@ import com.google.gson.JsonObject
 import com.jpndev.portfolio.data.model.PItem
 import com.jpndev.portfolio.data.util.Resource
 import com.jpndev.portfolio.domain.usecase.UseCase
-import com.jpndev.portfolio.utils.AESUtils
-import com.jpndev.portfolio.utils.Event
-import com.jpndev.portfolio.utils.LogUtils
+import com.jpndev.portfolio.utils.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -33,18 +34,31 @@ class AddPItemViewModel (
 
         var isUpdate:Boolean=false
 
-        var pitem: PItem = PItem()
+       // var pitem: PItem = PItem()
           //  get()=pitem
-
+        var pitem_mld = MutableLiveData<PItem>()
 
         private val statusMessage = MutableLiveData<Event<String>>()
         val message: LiveData<Event<String>>
             get() = statusMessage
 
+        fun copyTextFn(text:String)
+        {
+            var clipboardManager = app.getSystemService(
+                Context.CLIPBOARD_SERVICE) as ClipboardManager?
+            val separator = "\n"
+           // val text =pitem_mld.value?.value2
+            var clipData = ClipData.newPlainText("  ",text)
+            //   clipboardManager!!.primaryClip = clipData
+            clipboardManager!!.setPrimaryClip(clipData)
+            // jsontest=""
+            ToastHandler.newInstance(app).mustShowToast("Copied Json data and cleared")
+        }
+
 
         fun deletePItem(article: PItem) =viewModelScope.launch {
             usecase.executeDeletePItrm(article)
-            pitem?.let{
+            pitem_mld.value?.let{
 
             }?:let{
 
@@ -64,11 +78,19 @@ class AddPItemViewModel (
 
         fun savePItem() =viewModelScope.launch {
         //    usecase.executeSavePItem(pitem)
-            usecase.logsource.addLog("before ="+ pitem.value2)
-            pitem.value2= AESUtils.encrypt(pitem.value2)
-            usecase.logsource.addLog("after= "+ pitem.value2)
+            usecase.logsource.addLog("Add before ="+ pitem_mld.value?.value2)
 
-            val newRowId =    usecase.executeSavePItem(pitem)
+
+
+            if( pitem_mld.value?.value2_encrypted?:true)
+             pitem_mld.value?.value2= JAESUtils.encrypt( pitem_mld.value?.value2)
+
+            if( pitem_mld.value?.value1_encrypted?:true)
+                pitem_mld.value?.value1= JAESUtils.encrypt( pitem_mld.value?.value1)
+
+            usecase.logsource.addLog("Add after= "+  pitem_mld.value?.value2)
+
+            val newRowId =    usecase.executeSavePItem( pitem_mld.value!!)
             if (newRowId > -1) {
                 statusMessage.value = Event("Added Successfully $newRowId")
             } else {
@@ -79,12 +101,17 @@ class AddPItemViewModel (
         fun updatePItem() =viewModelScope.launch {
             //    usecase.executeSavePItem(pitem)
 
-            usecase.logsource.addLog("up before ="+ pitem.value2)
-            pitem.value2= AESUtils.encrypt(pitem.value2)
-            usecase.logsource.addLog("up after= "+ pitem.value2)
+            usecase.logsource.addLog("up before ="+  pitem_mld.value?.value2)
+           // pitem_mld.value?.value2= JAESUtils.encrypt( pitem_mld.value?.value2)
+            if( pitem_mld.value?.value2_encrypted?:true)
+                pitem_mld.value?.value2= JAESUtils.encrypt( pitem_mld.value?.value2)
+
+            if( pitem_mld.value?.value1_encrypted?:true)
+                pitem_mld.value?.value1= JAESUtils.encrypt( pitem_mld.value?.value1)
+            usecase.logsource.addLog("up after= "+  pitem_mld.value?.value2)
 
 
-            val newRowId =    usecase.executeUpdatePItem(pitem)
+            val newRowId =    usecase.executeUpdatePItem( pitem_mld.value!!)
             if (newRowId > -1) {
                 statusMessage.value = Event("Updated Successfully $newRowId")
             } else {

@@ -50,10 +50,10 @@ class ManageDownloadActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
       //  askForPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 101);
         askForPermission(Manifest.permission.READ_EXTERNAL_STORAGE, 102);
-        viewModel.usecase.logsource.addLog("MDA onCreate  thread = "+Thread.currentThread())
+        viewModel.usecase.logsource.addLog("MDA onCreate  : "+Thread.currentThread().name)
         binding.downloadBtn.setOnClickListener{
            // viewModel.setOneTimeWorkRequest1()
-            viewModel.setOneTimeWorkRequest1()
+            viewModel.setNotifyOneTimeWorkRequest1()
         }
         binding.closeDimv.setOnClickListener{
             onBackPressed()

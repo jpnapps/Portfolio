@@ -80,7 +80,7 @@
         android:layout_marginBottom="@dimen/_1sdp"
         android:layout_width="wrap_content"
         android:background="?attr/bg_view_1"
-
+        android:onClick="@{() -> viewmodel.checkExcute()}"
         android:textSize="@dimen/_14ssp"
         android:backgroundTint="?attr/tint_2"
         android:textColor="?attr/btn_text_color_1"
@@ -127,73 +127,171 @@
 
             <TextView
                 style="@style/Base_TXV_2"
-                android:text="Login"
+                android:textColor="@color/green"
+                android:text="@{viewmodel.pitem_mld.key1}"
                 android:visibility="gone"
                 />
             <!--    android:text="@string/hint_user_name"-->
-            <EditText
+<!--            <EditText
                 style="@style/Base_TXV_4"
                 android:id="@+id/key1_edt"
 
-                android:text="@={viewmodel.pitem.key1}"
+                android:text="@={viewmodel.pitem_mld.key1}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            </EditText>
+            </EditText>-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    style="@style/Base_TXV_4"
+                    android:id="@+id/key1_edt"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@+id/encrypt1_switch"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:text="@={viewmodel.pitem_mld.key1}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <Switch
+                    android:id="@+id/encrypt1_switch"
+                    android:checked="@={viewmodel.pitem_mld.value1_encrypted}"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></Switch>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content">
+            <!--                android:hint="@string/hint_user_name"-->
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextInputLayout"
                 android:id="@+id/value1_til"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_user_name"
+                android:layout_toLeftOf="@+id/copy1Dimv"
+                android:hint="@{viewmodel.pitem_mld.key1}"
                 android:textColorHint="?attr/text_color_5"
-                app:errorEnabled="true"
+                android:layout_marginRight="@dimen/_8sdp"
+                app:errorEnabled="false"
+                app:expandedHintEnabled="false"
                 android:layout_marginTop="@dimen/_12sdp">
+                <!--           android:hint="@{viewmodel.pitem_mld.key1}"-->
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/value_edt"
                     android:layout_width="match_parent"
-                    android:hint="@string/hint_user_name"
+
+                    android:hint="@{@string/hint_format(viewmodel.pitem_mld.key1)}"
                     android:maxLines="1"
-                    android:text="@={viewmodel.pitem.value1}"
+                    android:text="@={viewmodel.pitem_mld.value1}"
                     android:textColorHint="?attr/text_color_5"
                     android:textColor="?attr/text_color_1"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
+                <com.jpndev.portfolio.custom.DeviceFitImageView
+                    android:id="@+id/copy1Dimv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_copy_24"
+                    android:tint="@color/black_3"
+                    app:width_percentage="6"
+                    app:height_percentage="3"
+                    app:parameter="fixed_ratio"
+                    android:visibility="visible"
+                    android:onClick="@{() -> viewmodel.copyTextFn(viewmodel.pitem_mld.value1)}"
 
+                    />
+            </RelativeLayout>
             <!--        android:text="@string/hint_pwd"-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_height="wrap_content">
             <EditText
                 style="@style/Base_TXV_4"
                 android:id="@+id/key2_edt"
-
-                android:text="@={viewmodel.pitem.key2}"
+                android:layout_alignParentLeft="true"
+               android:layout_toLeftOf="@+id/encrypt2_switch"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:text="@={viewmodel.pitem_mld.key2}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <Switch
+                android:id="@+id/encrypt2_switch"
+
+                android:checked="@={viewmodel.pitem_mld.value2_encrypted}"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></Switch>
+            </RelativeLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayout"
-                android:id="@+id/value2_til"
+            <RelativeLayout
+                android:layout_marginTop="@dimen/_6sdp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint_pwd"
-                android:textColorHint="?attr/text_color_5"
-                app:errorEnabled="true"
-                android:layout_marginTop="@dimen/_12sdp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/value2_edt"
+
+                android:layout_height="wrap_content">
+<!--                android:hint="@string/hint_pwd"-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/value2_til"
+
                     android:layout_width="match_parent"
-                    android:hint="@string/login_email_hint"
-                    android:text="@={viewmodel.pitem.value2}"
-                    android:textColorHint="?attr/text_color_5"
-                    android:textColor="?attr/text_color_1"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    style="@style/TextInputLayout"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:layout_toLeftOf="@+id/copy2Dimv"
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:hint="@{viewmodel.pitem_mld.key2}"
+                    android:paddingBottom="0dp"
+                    android:textColorHint="?attr/text_color_5"
+                    app:errorEnabled="false"
+                    app:expandedHintEnabled="false">
+
+                    <!--                    android:hint="@string/login_password_hint"-->
 
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/value2_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+
+                        android:hint="@{@string/hint_format(viewmodel.pitem_mld.key2)}"
+
+                        android:text="@={viewmodel.pitem_mld.value2}"
+                        android:textColor="?attr/text_color_1"
+                        android:textColorHint="?attr/text_color_5" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.jpndev.portfolio.custom.DeviceFitImageView
+                    android:id="@+id/copy2Dimv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_copy_24"
+                    android:tint="@color/black_3"
+                    app:width_percentage="6"
+                    app:height_percentage="3"
+                    app:parameter="fixed_ratio"
+                    android:visibility="visible"
+                    android:onClick="@{() -> viewmodel.copyTextFn(viewmodel.pitem_mld.value2)}"
+
+                    />
+            </RelativeLayout>
         <!--    <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/password_text_input"
                 style="@style/TextInputLayout"

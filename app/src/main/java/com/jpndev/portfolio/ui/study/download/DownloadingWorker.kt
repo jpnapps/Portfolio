@@ -53,7 +53,7 @@ class DownloadingWorker @AssistedInject constructor(@Assisted context: Context,@
         var isComplete=false
         try {
 
-            useCase.logsource.addLog("WM D doWork Thread ="+Thread.currentThread().name)
+            useCase.logsource.addLog("WM D doWork Thread  : "+Thread.currentThread().name)
            // downloadZipFile()
             val apiResult = useCase.executeDownloadRequest(url)
             apiResult.data?.let{
@@ -142,7 +142,7 @@ class DownloadingWorker @AssistedInject constructor(@Assisted context: Context,@
      /*       val destinationFile =
                 File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                         filename)*/
-            useCase.logsource.addLog("WM D  writeResponseBodyToDisk  thread = "+Thread.currentThread())
+            useCase.logsource.addLog("WM D  writeResponseBodyToDisk : "+Thread.currentThread().name)
 
             var inputStream: InputStream? = null
             var outputStream: OutputStream? = null
@@ -175,12 +175,15 @@ class DownloadingWorker @AssistedInject constructor(@Assisted context: Context,@
                         }
                         outputStream?.write(fileReader, 0, read)
                         fileSizeDownloaded += read.toLong()
-                        useCase.logsource.addLog(
-                                "WM D file download: $fileSizeDownloaded of $fileSize" + " " + 100 * fileSizeDownloaded.toFloat() / fileSize + " % Thread =" + Thread.currentThread().name)
+                      // useCase.logsource.addLog("WM D file download: $fileSizeDownloaded of $fileSize" + " " + 100 * fileSizeDownloaded.toFloat() / fileSize + " % Thread =" + Thread.currentThread().name)
                     }
                     outputStream?.flush()
+                    useCase.logsource.addLog("WM D  completed : "+Thread.currentThread().name)
                     true
                 }
+
+
+
             } catch (e: IOException) {
                 useCase.logsource.addLog("WM D file download: e= "+e.message)
                 false
@@ -201,7 +204,7 @@ class DownloadingWorker @AssistedInject constructor(@Assisted context: Context,@
 
 
     private fun downloadZipFile() {
-        useCase.logsource.addLog("WM D  downloadZipFile Thread="+Thread.currentThread())
+        useCase.logsource.addLog("WM D  downloadZipFile : "+Thread.currentThread().name)
 
         val call: Call<ResponseBody> = apiservice.downloadFileWithDynamicUrlSync(url_zip)
         //  call.enqueue(Ca)
@@ -209,7 +212,7 @@ class DownloadingWorker @AssistedInject constructor(@Assisted context: Context,@
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
 
                 if (response.isSuccessful()) {
-                    useCase.logsource.addLog("WM D  Downloading... thread = "+Thread.currentThread())
+                    useCase.logsource.addLog("WM D  Downloading.. : "+Thread.currentThread().name)
                     response.body()?.let {   writeResponseBodyToDisk(it,"master.zip") }
 
                     Toast.makeText(applicationContext, "Downloading...", Toast.LENGTH_SHORT).show()

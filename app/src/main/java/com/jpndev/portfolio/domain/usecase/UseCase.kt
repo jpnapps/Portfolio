@@ -29,6 +29,7 @@ class UseCase (private val repository: AppRepository, private val appContext: Co
     }
 
     suspend fun executeDownloadRequest(url : String): Resource<ResponseBody> {
+   logsource.addLog("UseCase executeDownloadRequest : ${Thread.currentThread().name}")
         return repository.getDownloadBody(url)
     }
     /*suspend fun execute():Flow<List<Article>>{

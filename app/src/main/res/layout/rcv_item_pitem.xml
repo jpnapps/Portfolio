@@ -124,10 +124,10 @@ style="@style/BASE_CARD_1"
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:id="@+id/img_rlay"
+                android:id="@+id/showRlay"
 
-                android:background="@color/white"
-                android:visibility="gone"
+
+                android:visibility="visible"
 
                 android:layout_marginRight="0dp"
 
@@ -146,20 +146,25 @@ style="@style/BASE_CARD_1"
 
                     android:layout_height="wrap_content">
 
-                    <ImageView
+                    <com.jpndev.portfolio.custom.DeviceFitImageView
                         android:id="@+id/img_dimv"
-                        android:layout_width="100dp"
-                        android:layout_height="80dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:scaleType="centerCrop"
-
+                        android:scaleType="fitCenter"
+android:src="@drawable/ic_white_eye_24"
+                        android:backgroundTint="@color/black_6"
+                        app:width_percentage="8"
+                        app:height_percentage="8"
+                        app:parameter="fixed_ratio"
                         android:visibility="visible"
-                        tools:src="@tools:sample/avatars"
+         
 
                         />
 
-             
+             <!--  tools:src="@tools:sample/avatars"
+-->
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -179,7 +184,7 @@ android:maxLines="2"
 
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/card_guideline_x_left"
-                app:layout_constraintRight_toLeftOf="@+id/img_rlay"
+                app:layout_constraintRight_toLeftOf="@+id/showRlay"
                 android:layout_height="wrap_content"
                 android:id="@+id/key1_txv" />
             <TextView
@@ -197,7 +202,7 @@ android:maxLines="2"
 
 
                 app:layout_constraintLeft_toRightOf="@+id/card_guideline_x_left"
-                app:layout_constraintRight_toLeftOf="@+id/img_rlay"
+                app:layout_constraintRight_toLeftOf="@+id/showRlay"
                 app:layout_constraintTop_toBottomOf="@+id/key1_txv"
                 android:layout_height="wrap_content"
                 android:id="@+id/value1_ctxv" />
@@ -215,7 +220,7 @@ android:maxLines="2"
                 android:textSize="@dimen/_9ssp"
 
                 app:layout_constraintLeft_toRightOf="@+id/card_guideline_x_left"
-                app:layout_constraintRight_toLeftOf="@+id/img_rlay"
+                app:layout_constraintRight_toLeftOf="@+id/showRlay"
                 app:layout_constraintTop_toBottomOf="@+id/value1_ctxv"
                 android:layout_height="wrap_content"
                 android:id="@+id/key2_ctxv" />
@@ -236,7 +241,7 @@ android:maxLines="2"
 
 
                 app:layout_constraintLeft_toRightOf="@+id/card_guideline_x_left"
-                app:layout_constraintRight_toLeftOf="@+id/img_rlay"
+                app:layout_constraintRight_toLeftOf="@+id/showRlay"
                 app:layout_constraintTop_toBottomOf="@+id/key2_ctxv"
                 android:layout_height="wrap_content"
                 android:id="@+id/value2_ctxv" />

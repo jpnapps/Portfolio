@@ -1,0 +1,18 @@
+
+
+Android 9 (API level 28) >=
+  -higher and use foreground services must request the FOREGROUND_SERVICE
+  if not system throws a SecurityException.
+
+Android 10 (API level 29) or higher
+  accesses location information in a foreground service,
+  declare the location foreground service type as an attribute of your <service> component.
+
+Android 11 (API level 30) or higher
+  accesses the camera or microphone in a foreground service,
+  declare the camera or microphone foreground service types,
+  respectively, as attributes of your <service> component.
+
+  -Unless the user has granted the ACCESS_BACKGROUND_LOCATION permission to your app,
+  the foreground service cannot access location.
+  The foreground service cannot access the microphone or camera.

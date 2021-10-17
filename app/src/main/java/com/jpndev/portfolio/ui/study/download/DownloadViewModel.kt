@@ -68,9 +68,26 @@ class DownloadViewModel (
 //http://sarintechy.xyz/frontend/web/uploads/Clouds_51630070986.mp4
 
 
+        fun setNotifyOneTimeWorkRequest1()  =viewModelScope.launch(Dispatchers.IO) {
+            usecase.logsource.addLog(
+                "DVM setNotifyOneTimeWorkRequest1 : " + Thread.currentThread().name)
+            val workManager = WorkManager.getInstance(app)
+            val data: Data = Data.Builder().putString(DOWNLOAD, "" + text.value)
+
+                .build()
+            val constraints = Constraints.Builder().setRequiresCharging(true)
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+
+                .build()
+
+            val downloadRequest = OneTimeWorkRequest.Builder(NotifyDownloadingWorker::class.java)
+                .setConstraints(constraints).setInputData(data).build()
+
+            workManager.enqueue(downloadRequest);
+        }
         fun setOneTimeWorkRequest1()  =viewModelScope.launch(Dispatchers.IO) {
             usecase.logsource.addLog(
-                    "DVM setOneTimeWorkRequest1 thread = " + Thread.currentThread())
+                    "DVM setOneTimeWorkRequest1 : " + Thread.currentThread().name)
             val workManager = WorkManager.getInstance(app)
             val data: Data = Data.Builder().putString(DOWNLOAD, "" + text.value)
 
@@ -105,7 +122,7 @@ class DownloadViewModel (
 
              val blurBuilder = OneTimeWorkRequestBuilder<DownloadWorker>()
 
-             usecase.logsource.addLog("DVM setOneTimeWorkRequest2 Thread= "+Thread.currentThread().name)
+             usecase.logsource.addLog("DVM setOneTimeWorkRequest2 : "+Thread.currentThread().name)
              workManager.enqueue(downloadRequest);
         }
 

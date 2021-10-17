@@ -25,3 +25,32 @@ data class QA(
     @SerializedName("icon")
     val icon: String?
 ):Serializable
+
+
+@Entity(
+    tableName = "profile"
+)
+data class Profile(
+    @PrimaryKey(autoGenerate = true)
+    val id:Int?=null,
+    @SerializedName("name")
+    val name: String?,
+    @SerializedName("job")
+    val job: String?,
+    @SerializedName("phone1")
+    val phone1: String?,
+    @SerializedName("phone2")
+    val phone2: String?,
+    @SerializedName("mail1")
+    val mail1: String?,
+    @SerializedName("mail2")
+    val mail2: String?,
+    @SerializedName("stackoverflow")
+    val stackoverflow: String?,
+    @SerializedName("linkedln")
+    val linkedln: String?,
+    @SerializedName("web_url")
+    val web_url: String?,
+    @SerializedName("icon")
+    val icon: String?
+):Serializable

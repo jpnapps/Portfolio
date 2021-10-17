@@ -11,11 +11,15 @@
   <color name="app_dark_bg_1">#121212</color>
 
   <color name="app_white_txt">#ffffff</color>
+  <color name="app_white_txt2">#A4AABC</color>
   <color name="app_white_bg">#ffffff</color>
   <color name="card_white_bg">#ffffff</color>
   <color name="app_black_txt">#000000</color>
   <color name="app_black_bg">#000000</color>
   <color name="app_black_trans_bg">#50000000</color>
+
+
+
   <color name="text1_color">#000000</color>
   <color name="text2_color">#414D5B</color>
 

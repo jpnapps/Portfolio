@@ -13,9 +13,10 @@
     <color name="light_border_color_1">#70BD70</color>
     <color name="light_border_color_2">#13BD13</color>
 
+    <!--    <color name="dark_border_color_1">#fdaac6</color>-->
     <color name="dark_border_color_1">#EC95CC</color>
     <color name="dark_border_color_2">#BC0CC3</color>
-
+<!--    <color name="b_hint_1">#fdaac6</color>-->
     <color name="sys_border_color_1">#AEC3FB</color>
     <color name="sys_border_color_2">#51BDF6</color>
 
@@ -48,6 +49,9 @@
     <color name="black_3">#090432</color>
     <color name="black_4">#2E2424</color>
     <color name="black_5">#100E0E</color>
+    <color name="black_6">#23232c</color>
+    <color name="black_7">#1a1c22</color>
+
 
     <color name="b_hint_1">#A59C9C</color>
     <color name="b_hint_2">#EFE2E2</color>

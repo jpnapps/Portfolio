@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/Base.MatchParent"
+    android:orientation="vertical"
+
+    app:layoutDescription="@xml/ms_f_profile"
+    app:motionDebug="NO_DEBUG"
+    android:paddingBottom="0dp"
+    android:paddingTop="0dp"
+    >
+<!--    app:layoutDescription="@xml/ms_f_profile"
+    app:motionDebug="NO_DEBUG"-->
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/g_h_left"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.02"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/g_h_right"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.98"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/g_h_leftest"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.001"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/g_h_rightest"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.999"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/g_v_top"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.001"/>
+    <com.jpndev.portfolio.custom.DeviceFitImageView
+        android:id="@+id/profile_dimv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+android:background="?attr/bg_1"
+app:layout_constraintTop_toBottomOf="@+id/g_v_top"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_launcher"
+app:height_percentage="45"
+
+        app:parameter="aspect_height" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/top_cardv"
+        style="@style/BASE_CARD_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_6sdp"
+        app:cardElevation="15dp"
+        app:cardMaxElevation="15dp"
+
+        app:contentPadding="0dp"
+
+
+        app:layout_constraintLeft_toRightOf="@+id/g_h_left"
+        app:layout_constraintRight_toLeftOf="@+id/g_h_right"
+        app:layout_constraintTop_toBottomOf="@+id/profile_dimv"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_10sdp"
+            >
+            <TextView
+                android:id="@+id/nameTxv"
+                style="@style/Base_TXV_1"
+                android:text="JITHISH P N"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/jobTxv"
+                style="@style/Base_TXV_3"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Android Application Developer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/_1sdp"
+                >
+                <com.jpndev.portfolio.custom.DeviceFitImageView
+                    android:id="@+id/phoneTxv"
+                    style="@style/DIMV_Template1"
+                    android:src="@drawable/ic_contact_phone_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.jpndev.portfolio.custom.DeviceFitImageView
+                    android:id="@+id/phone2Txv"
+                    style="@style/DIMV_Template1"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:src="@drawable/ic_contact_phone_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.jpndev.portfolio.custom.DeviceFitImageView
+                    android:id="@+id/mailTxv"
+                    style="@style/DIMV_Template1"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:src="@drawable/ic_contact_mail_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.jpndev.portfolio.custom.DeviceFitImageView
+                    android:id="@+id/mail2Txv"
+                    style="@style/DIMV_Template1"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:src="@drawable/ic_contact_mail_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.jpndev.portfolio.custom.DeviceFitImageView
+                    android:id="@+id/stackTxv"
+                    style="@style/DIMV_Template1"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:src="@drawable/ic_stackoverflow_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <com.jpndev.portfolio.custom.DeviceFitImageView
+                    android:id="@+id/linkedlnTxv"
+                    style="@style/DIMV_Template1"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:src="@drawable/ic_linkedin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        tools:listitem="@layout/rcv_item_qa"
+        tools:itemCount="3"
+android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+    />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="315dp"
+        android:layout_marginEnd="169dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

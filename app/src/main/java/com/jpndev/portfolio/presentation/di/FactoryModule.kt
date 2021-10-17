@@ -2,6 +2,7 @@ package com.jpndev.portfolio.presentation.di
 
 import android.app.Application
 import com.jpndev.portfolio.domain.usecase.UseCase
+import com.jpndev.portfolio.presentation.ui.MainViewModelFactory
 import com.jpndev.portfolio.presentation.ui.topqa.QAViewModelFactory
 import com.jpndev.portfolio.ui.manage_log.ViewLogosViewModelFactory
 import com.jpndev.portfolio.ui.pmanage.AddPItemViewModelFactory
@@ -109,6 +110,20 @@ class FactoryModule {
         return DownloadViewModelFactory(
                 application,
                 useCase
+
+        )
+    }
+
+
+    @Singleton
+    @Provides
+    fun provideMainViewModelFactory(
+        application: Application,
+        useCase: UseCase
+    ): MainViewModelFactory {
+        return MainViewModelFactory(
+            application,
+            useCase
 
         )
     }

@@ -6,9 +6,13 @@
             app:startDestination="@+id/navigation_home">
 
     <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.jpndev.portfolio.presentation.ui.profile.ProfileFragment"
+        android:label="@string/navigation_profile" />
+  <!--  <fragment
         android:id="@+id/navigation_top_qa"
         android:name="com.jpndev.portfolio.presentation.ui.topqa.TopQAFragment"
-        android:label="@string/navigation_top_qa" />
+        android:label="@string/navigation_top_qa" />-->
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.jpndev.portfolio.ui.home.HomeFragment"
