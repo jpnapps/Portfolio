@@ -134,7 +134,15 @@ class  PManageActivity : AppCompatActivity() {
 
     private fun getValueString(value1Encrypted: Boolean, value1: String, temp: String): String {
       //   var text=""
-         return if(value1Encrypted) JAESUtils.decrypt(value1) ?: temp else value1
+         return if(value1Encrypted)  { encryptJp(AESUtils.decrypt(value1) ?: temp) } else value1
+
+    }
+
+    private fun encryptJp(text: String): String {
+        var text_enc=text
+        text_enc=text.replace("rajpal","hashMsd",true)
+        text_enc=text_enc.replace("#","@",true)
+        return text_enc
 
     }
 
