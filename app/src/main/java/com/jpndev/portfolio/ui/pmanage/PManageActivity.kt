@@ -24,6 +24,17 @@ import com.jpndev.portfolio.data.util.Resource
 import com.jpndev.portfolio.databinding.ActivityPmanageBinding
 import com.jpndev.portfolio.utils.AESUtils
 import com.jpndev.portfolio.utils.JAESUtils
+import com.jpndev.portfolio.utils.ParserConstants.COMMA
+import com.jpndev.portfolio.utils.ParserConstants.END_ARRAY_BRACES
+import com.jpndev.portfolio.utils.ParserConstants.END_BRACES
+import com.jpndev.portfolio.utils.ParserConstants.KEY_1
+import com.jpndev.portfolio.utils.ParserConstants.KEY_2
+import com.jpndev.portfolio.utils.ParserConstants.NEWLINE
+import com.jpndev.portfolio.utils.ParserConstants.OPEN_ARRAY_BRACES
+import com.jpndev.portfolio.utils.ParserConstants.OPEN_BRACES
+import com.jpndev.portfolio.utils.ParserConstants.SEMI_COLON
+import com.jpndev.portfolio.utils.ParserConstants.VALUE_1
+import com.jpndev.portfolio.utils.ParserConstants.VALUE_2
 import com.jpndev.portfolio.utils.ToastHandler
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.MainScope
@@ -117,21 +128,22 @@ class PManageActivity : AppCompatActivity() {
      */
     private fun configBackup() {
         val list = pitemadapter.getItems()
-        var temp = ""
+        var temp = OPEN_ARRAY_BRACES
         list?.let {
             for (item in it) {
-                temp = temp + item.key1 + ": " + viewModel.getValueString(
+                temp = temp +OPEN_BRACES+KEY_1+SEMI_COLON+ item.key1 +COMMA+NEWLINE+ VALUE_1+ SEMI_COLON+ viewModel.getValueString(
                     item.value1_encrypted,
                     item.value1,
                     "Data formatted"
-                ) + "\n"
-                temp = temp + item.key2 + ": " + viewModel.getValueString(
+                ) +COMMA+NEWLINE
+                temp = temp +KEY_2+SEMI_COLON+ item.key2 +COMMA+NEWLINE+ VALUE_2+ SEMI_COLON+ viewModel.getValueString(
                     item.value2_encrypted,
                     item.value2,
                     "Data formatted"
-                ) + "\n"
+                ) +NEWLINE+END_BRACES+COMMA
             }
         }
+        temp=temp+ NEWLINE+ END_ARRAY_BRACES
         var clipboardManager = getSystemService(
             Context.CLIPBOARD_SERVICE
         ) as ClipboardManager?

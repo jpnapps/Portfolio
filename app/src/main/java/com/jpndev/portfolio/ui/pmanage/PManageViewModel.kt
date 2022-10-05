@@ -215,6 +215,9 @@ class PManageViewModel(
         }
     }
 
+    /**
+     * function used to convertToPItem
+     */
     private fun convertToPItem(pInputData: PInputData): PItem {
         return PItem().apply {
             key1 = pInputData.key_1
@@ -226,6 +229,9 @@ class PManageViewModel(
         }
     }
 
+    /**
+     * function used to getValueString
+     */
     fun getValueString(value1Encrypted: Boolean, value1: String, temp: String): String {
         //   var text=""
         return if (value1Encrypted) {
@@ -234,14 +240,20 @@ class PManageViewModel(
 
     }
 
+    /**
+     * function used to encryptJp
+     */
     fun encryptJp(text: String): String {
         var text_enc = text
         text_enc = text.replace("rajpal", "hashvk", true)
         text_enc = text.replace("Rajpal", "hashMsd", true)
         text_enc = text_enc.replace("#", "@", true)
         return text_enc
-
     }
+
+    /**
+     * function used to decryptJp
+     */
     fun decryptJp(text: String): String {
         var text_enc = text
         text_enc = text.replace("hashvk", "rajpal", true)
