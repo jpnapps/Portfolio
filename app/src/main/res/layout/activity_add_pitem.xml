@@ -81,11 +81,12 @@
         android:layout_width="wrap_content"
         android:background="?attr/bg_view_1"
         android:onClick="@{() -> viewmodel.checkExcute()}"
+        android:text="@{viewmodel.action_menu_text}"
         android:textSize="@dimen/_14ssp"
         android:backgroundTint="?attr/tint_2"
         android:textColor="?attr/btn_text_color_1"
         android:layout_height="wrap_content"
-        android:text="@{viewmodel.action_menu_text}"/>
+    />
 
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 ext {
-    hlit_version = "2.35"
+    //hlit_version = "2.35"
+    hlit_version = "2.40.5"
     nav_version = "2.3.4"
     lifecycle_version = "2.3.1"
     //coroutine
