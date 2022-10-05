@@ -65,9 +65,6 @@ class  PManageActivity : AppCompatActivity() {
         pitemadapter.setViewModel(viewModel)
         AESUtils.logsource=  viewModel?.getUseCase()?.logsource
 
-
-
-
         pitemadapter.setOnItemClickListner {
 
            /* viewModel.setBioPrompt(this@PManageActivity,{
@@ -140,7 +137,8 @@ class  PManageActivity : AppCompatActivity() {
 
     private fun encryptJp(text: String): String {
         var text_enc=text
-        text_enc=text.replace("rajpal","hashMsd",true)
+        text_enc=text.replace("rajpal","hashmsd",true)
+        text_enc=text.replace("Rajpal","Hashmsd",true)
         text_enc=text_enc.replace("#","@",true)
         return text_enc
 

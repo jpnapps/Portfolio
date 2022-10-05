@@ -14,11 +14,13 @@ import androidx.lifecycle.*
 
 
 import com.google.gson.JsonObject
+import com.jpndev.portfolio.data.model.PInputData
 import com.jpndev.portfolio.data.model.PItem
 import com.jpndev.portfolio.data.util.Resource
 import com.jpndev.portfolio.domain.usecase.UseCase
 import com.jpndev.portfolio.ui.study.actvity.LifeCycleActivity
 import com.jpndev.portfolio.utils.LogUtils
+import com.jpndev.portfolio.utils.parser.PDataParser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -173,18 +175,18 @@ class PManageViewModel (
 
             biometricPrompt.authenticate(promptInfo)
         }
+        // array list for p input data from json
+        private lateinit var pdatajsonList: ArrayList<PInputData>
 
-
-
-
-
-
-
-
-
-
-
-
+        /**
+         * function used to get watch settings item data from configuration file
+         */
+        private fun getPDatasFromAssets() {
+            // array list for watch settings
+            pdatajsonList = ArrayList()
+            // method to get the data from watch settings configuration file
+            pdatajsonList = PDataParser.parse(app.applicationContext)
+        }
 
     }
 
